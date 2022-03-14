@@ -140,8 +140,8 @@ module.exports = configure(function (ctx) {
       },
 
       manifest: {
-        name: `Portifoliio`,
-        short_name: `Portifoliio`,
+        name: `Portifolio`,
+        short_name: `Portifolio`,
         description: `A Quasar Framework app`,
         display: "standalone",
         orientation: "portrait",
