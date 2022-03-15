@@ -140,8 +140,8 @@ module.exports = configure(function (ctx) {
       },
 
       manifest: {
-        name: `Portifolio`,
-        short_name: `Portifolio`,
+        name: `Portfolio`,
+        short_name: `Portfolio`,
         description: `A Quasar Framework app`,
         display: "standalone",
         orientation: "portrait",
@@ -205,7 +205,7 @@ module.exports = configure(function (ctx) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: "portifolio",
+        appId: "portfolio",
       },
 
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain

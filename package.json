@@ -1,8 +1,8 @@
 {
-  "name": "portifolio",
+  "name": "portfolio",
   "version": "0.0.1",
   "description": "A Quasar Framework app",
-  "productName": "Portifolio",
+  "productName": "Portfolio",
   "author": "Filipematiasp@gmail.com",
   "private": true,
   "scripts": {
