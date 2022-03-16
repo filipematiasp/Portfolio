@@ -14,8 +14,6 @@
 
     <q-page-container>
       <router-view />
-      <router-view />
-      <router-view />
     </q-page-container>
 
     <q-footer elevated class="bg-grey-8 text-white">
