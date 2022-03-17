@@ -1,2 +1,2 @@
-# Portfólio (em desenvolvimento)
+# Portfólio em vue.js/quasar (em desenvolvimento)
  
