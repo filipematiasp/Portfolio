@@ -1,6 +1,5 @@
 <template>
-  <div class="text-h2 q-pa-md">Artigos</div>
-  <BlogNews />
+  <div class="text-h3 q-pa-md" style="color: #1976d2">Artigos</div>
   <BlogNews />
   <BlogNews />
   <BlogNews />
@@ -20,5 +19,6 @@ export default {
 </script>
 
 <style scoped>
+
 
 </style>
