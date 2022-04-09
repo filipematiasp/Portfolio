@@ -11,9 +11,9 @@
             <q-menu>
               <div class="q-pa-lg">
                 <div class="text-h6 q-mb-md">Login</div>
-                  <q-form @submit="onSubmit" class="q-gutter-md">
-                    <q-input type="text" label="username" />
-                    <q-input type="password" label="password" />
+                  <q-form @submit="login" class="q-gutter-md">
+                    <q-input type="text" v-model="userLogin" label="username" />
+                    <q-input type="password" v-model="passwordLogin" label="password" />
                     <div>
                       <q-btn label="submit" type="submit" color="primary" />
                     </div>
@@ -48,5 +48,18 @@ import { defineComponent, ref } from "vue";
 
 export default defineComponent({
     name: "MainLayout",
+
+    data() {
+      return{
+        userLogin: '',
+        passwordLogin: ''
+      }
+    },
+    methods: {
+      async login() {
+        let response = await this.$api.post('/user/login', {email: this.userLogin, password: this.passwordLogin})
+        console.log(response)
+      }
+    }
 })
 </script>
