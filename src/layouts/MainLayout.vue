@@ -12,10 +12,10 @@
               <div class="q-pa-lg">
                 <div class="text-h6 q-mb-md">Login</div>
                   <q-form @submit="login" class="q-gutter-md">
-                    <q-input type="text" v-model="userLogin" label="username" />
-                    <q-input type="password" v-model="passwordLogin" label="password" />
+                    <q-input type="text" v-model="userLogin" label="email" :rules="[val => val && val.length > 3 || 'Por favor digite algo!']" />
+                    <q-input type="password" v-model="passwordLogin" label="password" :rules="[val => val != null && val !== '' || 'Password em branco', val => val.length < 3 || 'Password muito curto']" />
                     <div>
-                      <q-btn label="submit" type="submit" color="primary" />
+                      <q-btn label="ENTRAR" type="submit" color="primary" />
                     </div>
                   </q-form>
               </div>
@@ -35,7 +35,6 @@
         <q-icon size="md" name="email" />
         <q-icon size="md" name="phone" />
         <q-icon size="md" name="location_on">
-          <FormLogin />
         </q-icon>
       </q-toolbar>
     </q-footer>
@@ -43,23 +42,43 @@
 </template>
 
 <script>
-
+import { useQuasar } from 'quasar'
 import { defineComponent, ref } from "vue";
 
-export default defineComponent({
-    name: "MainLayout",
 
-    data() {
-      return{
-        userLogin: '',
-        passwordLogin: ''
-      }
-    },
-    methods: {
-      async login() {
-        let response = await this.$api.post('/user/login', {email: this.userLogin, password: this.passwordLogin})
-        console.log(response)
+export default defineComponent({
+  name: "MainLayout",
+
+  data() {
+    return{
+      userLogin: '',
+      passwordLogin: ''
+    }
+  },
+  setup() {
+    const $q = useQuasar()
+    return {
+      showNotify (type, message) {
+        $q.notify({
+          message,
+          type,
+          timeout: 1500,
+          position: 'top'
+        })
       }
     }
+  },
+  methods: {
+    async login() {
+      try{
+        await this.$api.post('/user/login', {email: this.userLogin, password: this.passwordLogin})
+        this.showNotify('positive', 'Logado')
+      }catch (e) {
+        console.log(e)
+        this.showNotify('negative', `${e.response.data}`)
+      }
+    }
+  }
+
 })
 </script>
